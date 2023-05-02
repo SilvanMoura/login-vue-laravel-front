@@ -21,6 +21,9 @@
 </template>
 
 <script>
+
+    import Cookie from 'js-cookie';
+
     export default {
         name: "Login",
 
@@ -29,6 +32,10 @@
                 email: '',
                 password: ''
             };
+        },
+
+        created() {
+            Cookie.remove('_myapp_token');
         },
 
         methods: {
@@ -49,7 +56,7 @@
 
                 const data = await req.json();
 
-                console.log(data);
+                Cookie.set('_myapp_token', data.access_token);
 
             }
         }
