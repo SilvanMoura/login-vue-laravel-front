@@ -34,9 +34,9 @@
             };
         },
 
-        created() {
+        /* created() {
             Cookie.remove('_myapp_token');
-        },
+        }, */
 
         methods: {
              async submit() {
