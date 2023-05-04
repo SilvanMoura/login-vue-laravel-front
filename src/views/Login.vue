@@ -1,8 +1,13 @@
 <template>
+
+    <Navbar />
+
     <main class="form-signin w-100 m-auto">
         <form @submit.stop.prevent="submit">
             
             <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+            <Message v-if="msg" :msg="msg" />
 
             <div class="form-floating">
                 <input v-model="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
@@ -23,6 +28,8 @@
 <script>
 
     import Cookie from 'js-cookie';
+    import Navbar from '../components/Navbar.vue';
+    import Message from '../components/Message.vue';
 
     export default {
         name: "Login",
@@ -30,13 +37,15 @@
         data(){
             return{
                 email: '',
-                password: ''
+                password: '',
+                msg: ''
             };
         },
 
-        /* created() {
-            Cookie.remove('_myapp_token');
-        }, */
+        components: {
+            Navbar,
+            Message
+        },
 
         methods: {
              async submit() {
@@ -56,7 +65,25 @@
 
                 const data = await req.json();
 
-                Cookie.set('_myapp_token', data.access_token);
+                
+                if( data.access_token ){
+                    Cookie.set('_myapp_token', data.access_token);
+                    this.msg = "Login realizado com sucesso";
+
+                    setTimeout( () => {
+                        this.msg = "";
+                        this.$router.push('/');
+
+                    }, 3000);
+                }else{
+                    setTimeout( () => {
+                        this.msg = "Login não realizado, por favor, verifique o e-mail e/ou senha";
+
+                        this.email = "";
+                        this.password = "";
+
+                    }, 3000);
+                }
 
             }
         }
@@ -64,19 +91,6 @@
 </script>
 
 <style scoped>
-
-    /* html,
-    body {
-    height: 100%;
-    }
-
-    body {
-    display: flex;
-    align-items: center;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    background-color: #f5f5f5;
-    } */
 
     .form-signin {
     max-width: 330px;

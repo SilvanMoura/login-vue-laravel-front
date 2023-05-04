@@ -1,5 +1,7 @@
 <template>
 
+    <Navbar />
+
     <main class="form-signin w-100 m-auto">
         <form @submit.stop.prevent="submit">
             
@@ -36,6 +38,7 @@
 <script>
 
     import Message from '../components/Message.vue';
+    import Navbar from '../components/Navbar.vue';
 
     export default {
         name: "Register",
@@ -52,6 +55,7 @@
 
         components: {
             Message,
+            Navbar
         },
 
         methods: {
@@ -83,7 +87,7 @@
                     }, 3000);
                 }else{
                     setTimeout( () => {
-                        this.msg = "";
+                        this.msg = "Cadastro não realizado, por favor, verifique as informações informadas";
 
                         this.userName = "";
                         this.email = "";

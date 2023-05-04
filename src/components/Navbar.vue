@@ -1,9 +1,7 @@
 <template>
     <nav>
-        <Router-link id="logo-url" to="/">
-        </Router-link>
         <router-link to="/">Home</router-link>
-        <router-link to="/requests">Pedidos</router-link>
+        <router-link to="/about">Sobre Nós</router-link>
     </nav>
 </template>
 
@@ -15,8 +13,8 @@
 
 <style scoped>
     nav{
-        background-color: #222;
-        border-bottom: 4px solid #111;
+        background-color: #0b5ed7;
+        border-bottom: 2px solid #4388ee;
         padding: 15px 50px;
         display: flex;
         justify-content: flex-end;
@@ -34,13 +32,13 @@
     }
 
     nav a{
-        color: #FCBA03;
+        color: #f7fafa;
         text-decoration: none;
         margin: 12px;
         transition: .5s;
     }
 
     nav a:hover{
-        color: #FFF;
+        color: #292821;
     }
 </style>
