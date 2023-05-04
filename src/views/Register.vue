@@ -105,7 +105,17 @@
             },
             loadLogin(){
                 this.$router.push('/login');
+            },
+            checkingRegister(){
+                const token = Cookie.get("_myapp_token");
+
+                if(token){
+                    this.$router.push('/');
+                }
             }
+        },
+        beforeMount(){
+            this.checkingRegister()
         }
     }
 </script>

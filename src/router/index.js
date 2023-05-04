@@ -14,17 +14,17 @@ const routes = [
     path: '/about',
     name: 'about',
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue'),
-    beforeEnter: Guard.auth
+    beforeEnter: Guard.beforeAuth
   },
   {
     path: '/register',
     name: 'Register',
-    component: Register
+    component: Register,
   },
   {
     path: '/login',
     name: 'Login',
-    component: Login
+    component: Login,
   }
   
 ]
