@@ -1,8 +1,11 @@
 <template>
+
     <main class="form-signin w-100 m-auto">
-        <form>
+        <form @submit.stop.prevent="submit">
             
             <h1 class="h3 mb-3 fw-normal">Please register</h1>
+
+            <Message v-if="msg" :msg="msg" />
 
             <div class="form-floating">
                 <input v-model="userName" type="string" class="form-control" id="floatingUserName" placeholder="Marcos Lahen">
@@ -32,7 +35,7 @@
 
 <script>
 
-    //import Cookie from 'js-cookie';
+    import Message from '../components/Message.vue';
 
     export default {
         name: "Register",
@@ -42,36 +45,56 @@
                 userName: '',
                 email: '',
                 password: '',
-                confirmPassword: ''
+                confirmPassword: '',
+                msg: ''
             };
         },
 
-        /* created() {
-            Cookie.remove('_myapp_token');
-        }, */
+        components: {
+            Message,
+        },
 
-        /*methods: {
+        methods: {
             async submit() {
-                const playload = {
+                const payload = {
+                    name: this.userName,
                     email: this.email,
                     password: this.password
                 };
 
-                const req =  await fetch('http://localhost:8000/api/login', {
+                const req =  await fetch('http://localhost:8000/api/register', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                         'Access': 'application/json'
                     },
-                    body: JSON.stringify(playload)
+                    body: JSON.stringify(payload)
                 });
 
                 const data = await req.json();
 
-                Cookie.set('_myapp_token', data.access_token);
+                if( data == "success" ){
+                    this.msg = "Usuário cadastrado com sucesso";
+
+                    setTimeout( () => {
+                        this.msg = "";
+                        this.$router.push('/login');
+
+                    }, 3000);
+                }else{
+                    setTimeout( () => {
+                        this.msg = "";
+
+                        this.userName = "";
+                        this.email = "";
+                        this.password = "";
+                        this.confirmPassword = "";
+
+                    }, 3000);
+                }
 
             }
-        } */
+        }
     }
 </script>
 

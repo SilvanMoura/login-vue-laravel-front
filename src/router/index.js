@@ -17,15 +17,16 @@ const routes = [
     beforeEnter: Guard.auth
   },
   {
-    path: '/login',
-    name: 'Login',
-    component: Login
-  },
-  {
     path: '/register',
     name: 'Register',
     component: Register
   },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login
+  }
+  
 ]
 
 const router = createRouter({
