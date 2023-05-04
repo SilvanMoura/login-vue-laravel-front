@@ -28,6 +28,11 @@
                 <input v-model="confirmPassword" type="password" class="form-control" id="floatingConfirmPassword" placeholder="Confirm assword">
                 <label for="confirmPassword">Confirm password</label>
             </div>
+
+            <div id="btn-login">
+                <span>Já tem conta?</span>
+                <button type="button" @click="loadLogin">Entrar.</button>
+            </div>
             
             <button class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
 
@@ -97,6 +102,9 @@
                     }, 3000);
                 }
 
+            },
+            loadLogin(){
+                this.$router.push('/login');
             }
         }
     }
@@ -132,6 +140,20 @@
         margin-bottom: 10px;
         border-top-right-radius: 0;
         border-top-left-radius: 0;
+    }
+
+    #btn-login{
+        margin: 15px 0;
+    }
+
+    #btn-login button{
+        background-color: #fff;
+        border: none;
+        color: #0b5ed7;
+    }
+
+    #btn-login button:hover{
+        color: #0c49a5;
     }
 
 </style>

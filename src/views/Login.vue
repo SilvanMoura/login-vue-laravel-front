@@ -18,6 +18,12 @@
                 <input v-model="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
                 <label for="floatingPassword">Password</label>
             </div>
+
+            <div id="btn-register">
+                <span>Não tem conta?</span>
+                <button type="button" @click="loadRegister">Cadastre-se.</button>
+            </div>
+            
             
             <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
 
@@ -85,6 +91,9 @@
                     }, 3000);
                 }
 
+            },
+            loadRegister(){
+                this.$router.push('/register');
             }
         }
     }
@@ -111,6 +120,20 @@
     margin-bottom: 10px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+    }
+
+    #btn-register{
+        margin: 15px 0;
+    }
+
+    #btn-register button{
+        background-color: #fff;
+        border: none;
+        color: #0b5ed7;
+    }
+
+    #btn-register button:hover{
+        color: #0c49a5;
     }
 
 </style>

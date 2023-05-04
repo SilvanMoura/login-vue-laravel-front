@@ -42,6 +42,7 @@
             },
             logout(){
                 Cookies.remove("_myapp_token");
+                this.$router.push('/');
             }
         },
         mounted() {
